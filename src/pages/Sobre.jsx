@@ -1,8 +1,9 @@
 import React from "react";
+import "animate.css/animate.css";
 
 const Sobre = () => {
     
-        return <section> Página Sobre </section>
+        return  <section> Página Sobre </section>
 
 }
 
