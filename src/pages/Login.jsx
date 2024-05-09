@@ -15,7 +15,9 @@ const Login = () => {
             setLogin(true)
             Cookies.set("usuario", usuario, {expires:7})
         }
-        else 
+        else if (usuario!='jose'){
+            alert("usuario invalido")
+        }else
         alert("senha invalida")
     };
     if(login){
