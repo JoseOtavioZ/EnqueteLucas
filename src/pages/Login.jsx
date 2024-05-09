@@ -1,12 +1,29 @@
 import React, { useState } from "react";
+import Cookies from "js-cookie";
+import {Navigate} from "react-router-dom"
 
 const Login = () => {
  
     const[usuario, setUsuario] = useState("");
     const[senha, setSenha] = useState("");
+    const[login, setLogin] = useState(false);
+
+    const submitForm = (e) => {
+        e.preventDefault();
+        
+        if(usuario=='jose' && senha=='123'){
+            setLogin(true)
+            Cookies.set("usuario", usuario, {expires:7})
+        }
+        else 
+        alert("senha invalida")
+    };
+    if(login){
+        return<Navigate to="/adicionar-enquete"/>
+    }
 
         return <section className="animate__animated animate__bounceInLeft"> 
-            <form>
+            <form onSubmit={submitForm}>
                 <label>Usuario</label>
                 <br />
                 <input 
@@ -20,7 +37,7 @@ const Login = () => {
                 type="password" 
                 value={senha} 
                 onChange={(e)=> setSenha(e.target.value)}></input>
-                <button className="animate__animated animate__jello" type="submit">Acessar</button>
+                <button type="submit">Acessar</button>
             </form>
              </section>
 
