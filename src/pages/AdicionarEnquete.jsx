@@ -40,19 +40,15 @@ const AdicionarEnquete = () => {
           </div>
         ))}
         <br />
-        { enquete ?(
-        <button type="submit" onClick={addOpcao}>
-          Adicionar opção
-        </button>
-        ):("")
-        } 
-        <br/>
-        { opcoes.length > 0 ?(
-        <button type="submit" >
-          Salvar enquete
-        </button>
-        ) : ("")
-        }
+        {enquete ? (
+          <button type="submit" onClick={addOpcao}>
+            Adicionar opção
+          </button>
+        ) : (
+          ""
+        )}
+        <br />
+        {opcoes.length > 0 ? <button type="submit">Salvar enquete</button> : ""}
       </form>
     </section>
   );
