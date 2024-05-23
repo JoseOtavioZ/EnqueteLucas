@@ -1,48 +1,57 @@
-import React, { useState } from "react";
+import React from "react";
+import "animate.css/animate.css";
+import { useState } from "react";
 import Cookies from "js-cookie";
-import {Navigate} from "react-router-dom"
 
 const Login = () => {
- 
-    const[usuario, setUsuario] = useState("");
-    const[senha, setSenha] = useState("");
-    const[login, setLogin] = useState(false);
+  const [usuario, setUsuario] = useState("");
+  const [senha, setSenha] = useState("");
+  const [login, setLogin] = useState(false);
 
-    const submitForm = (e) => {
-        e.preventDefault();
-        
-        if(usuario=='jose' && senha=='123'){
-            setLogin(true)
-            Cookies.set("usuario", usuario, {expires:7})
-        }
-        else if (usuario!='jose'){
-            alert("usuario invalido")
-        }else
-        alert("senha invalida")
-    };
-    if(login){
-        return<Navigate to="/adicionar-enquete"/>
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    if (usuario == "jose" && senha == "123") {
+      setLogin(true);
+      alert("Login efetuado");
+      Cookies.set("usuario", usuario, { expires: 7 });
     }
+    if (usuario != "jose") {
+      alert("Usuário incorreto");
+    } else if (senha != "123") {
+      alert("Senha incorreta");
+    }
+  };
 
-        return <section className="animate__animated animate__bounceInLeft"> 
-            <form onSubmit={submitForm}>
-                <label>Usuario</label>
-                <br />
-                <input 
-                type="text" 
-                value={usuario} 
-                onChange={(e)=> setUsuario(e.target.value)}></input>
-                <br />
-                <label>Senha</label>
-                <br />
-                <input 
-                type="password" 
-                value={senha} 
-                onChange={(e)=> setSenha(e.target.value)}></input>
-                <button type="submit">Acessar</button>
-            </form>
-             </section>
-
-}
+  return (
+    <section>
+      <form onSubmit={submitForm}>
+        <label> Usuário </label>
+        <br />
+        <input
+          type="text"
+          value={usuario}
+          onChange={(e) => setUsuario(e.target.value)}
+          placeholder="Usuário"
+        ></input>
+        <br />
+        <label> Senha </label>
+        <br />
+        <input
+          type="password"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+          placeholder="Senha"
+        ></input>
+        <br />
+        <br />
+        <button type="submit" className="animate__animated animate__headShake">
+          {" "}
+          Acessar{" "}
+        </button>
+      </form>
+    </section>
+  );
+};
 
 export default Login;

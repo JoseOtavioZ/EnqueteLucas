@@ -1,10 +1,7 @@
 import React from "react";
-import "animate.css/animate.css";
 
 const Sobre = () => {
-    
-        return  <section> Página Sobre </section>
-
-}
+  return <section> Sobre </section>;
+};
 
 export default Sobre;
